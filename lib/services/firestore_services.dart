@@ -84,4 +84,37 @@ class FirestoreService {
       throw Exception('Favori notlar getirilemedi: $e');
     }
   }
+
+  // PROFIL METODLARI - YENİ EKLENENLER
+
+  // Kullanıcı profili kaydetme/güncelleme
+  Future<void> saveUserProfile(String userId, Map<String, dynamic> profileData) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(userId)
+          .set(profileData, SetOptions(merge: true));
+    } catch (e) {
+      throw Exception('Profil kaydedilemedi: $e');
+    }
+  }
+
+  // Kullanıcı profilini getirme
+  Future<Map<String, dynamic>> getUserProfile(String userId) async {
+    try {
+      final docSnapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .get();
+
+      if (docSnapshot.exists) {
+        return docSnapshot.data() ?? {};
+      } else {
+        // Profil yoksa boş map döndür
+        return {};
+      }
+    } catch (e) {
+      throw Exception('Profil getirilemedi: $e');
+    }
+  }
 }

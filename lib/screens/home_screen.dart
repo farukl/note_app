@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
               'E-posta: ${user.email}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
+
             const SizedBox(height: 32),
             Card(
               child: ListTile(
@@ -70,6 +71,27 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(height: 16),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text('Profil'),
+                subtitle: const Text('Profil bilgilerini düzenle'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/profile');
+                },
+              ),
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.contact_mail),
+              title: const Text('Bize Ulaşın'),
+              onTap: () {
+                Navigator.pushNamed(context, '/contact');
+              },
+            ),
+
+
             const Spacer(),
             ElevatedButton.icon(
               onPressed: () async {

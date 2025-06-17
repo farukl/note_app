@@ -10,6 +10,8 @@ import 'package:note_app/screens/notes_screen.dart';
 import 'package:note_app/screens/add_note_screen.dart';
 import 'package:note_app/screens/favorites_screen.dart';
 import 'package:note_app/screens/settings_screen.dart';
+import 'package:note_app/screens/profile_screen.dart';
+import 'package:note_app/screens/contact_us.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +42,7 @@ class MyApp extends StatelessWidget {
       theme: Provider.of<ThemeProvider>(context, listen: true).currentTheme,
       initialRoute: '/',
       routes: {
+
         '/': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/home': (context) => const HomeScreen(),
@@ -47,6 +50,10 @@ class MyApp extends StatelessWidget {
         '/add_note': (context) => const AddNoteScreen(),
         '/favorites': (context) => const FavoritesScreen(),
         '/settings': (context) => const SettingsScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/contact': (context) => const ContactScreen(),
+
+
       },
     );
   }
